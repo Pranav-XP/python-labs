@@ -1,52 +1,37 @@
-# Lab Week 13 template.
-# Below is a definition of a class, and a short script that uses that class.
-# Read it carefully and understand what it is doing.
-# Run the script and see what happens.
-# The reason it gives an error is that a call is made to a method
-# That does not exist.
-# In more detail: The class NaturalNumber has four method. A constructor,
-# and the methods get(), isEven(), and isSquare().
-# As you should see, the script invokes there three methods.
-# But it also invokes the method isPrime(). That method is not defined.
-# You task is to add the method isPrime to the class definition and
-# write its code so it correctly checks for primality.
-# You must not alter any other method.
-# You must not alter the main.
-
-
-
 class NaturalNumber:
     def __init__(self, n):
-        self.n = n
+        self.n = n  # Store the input number as an instance variable
 
     def get(self):
-        return self.n
+        return self.n  # Return the stored number
 
     def isEven(self):
-        return self.n % 2 == 0
+        return self.n % 2 == 0  # Check if the number is divisible by 2
 
     def isSquare(self):
+        # Check if there exists any integer k such that k^2 equals the number
         for k in range(1, self.n):
             if self.n == k ** 2:
                 return True
         return False
     
     def isPrime(self):
-        prime = True
-        # If given number is greater than 1 
+        prime = True  # Assume the number is prime initially
+        
+        # Prime numbers are greater than 1
         if self.n > 1:  
-            # Iterate from 2 to n / 2  
-            for i in range(2, self.n): 
-                # If num is divisible by any number between  
-                # 2 and n / 2, it is not prime  
+            # Check for divisibility from 2 up to n - 1
+            for i in range(2, self.n):
+                print("Checking for divisibility with:", i)  # Debug message
+                # If self.n is divisible by any number in this range, it's not prime
                 if (self.n % i) == 0: 
-                    prime =  False
-                    break
-          # if number is less than 1
+                    prime = False  # Found a divisor → not prime
+                    break  # No need to check further
         else: 
-          prime = False
+            # If the number is 1 or less, it's not prime
+            prime = False
 
-        return prime;
+        return prime  # Return the result of the primality check
 
 
 
@@ -75,4 +60,3 @@ def main():
     
 
 main()
-
